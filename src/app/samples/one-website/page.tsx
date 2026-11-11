@@ -123,11 +123,20 @@ export default function OneWebsiteSample() {
         ]}
       />
 
-      <header>
+      <header className="sheet-header-with-action">
         <h1 className="sheet-name">One website</h1>
         <p className="sheet-lede">
           No small print, no queues.
         </p>
+        <a
+          className="sheet-site-link"
+          href="https://one.bancoatlantida.com.sv/"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Visit live site <span aria-hidden="true">↗</span>
+          <span className="sr-only"> (opens in a new tab)</span>
+        </a>
       </header>
 
       <figure className="frame sheet-hero">

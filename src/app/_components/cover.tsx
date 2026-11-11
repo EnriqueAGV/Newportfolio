@@ -6,6 +6,7 @@ import { voiceFace } from "~/specimen/settings";
 import { useSpecimen } from "./specimen-provider";
 import type { Weather } from "~/server/weather";
 import { LocalConditions } from "./local-conditions";
+import { SideProject } from "./side-project";
 import { TitleBlock } from "./title-block";
 
 type Metrics = { size: number; tracking: number; leading: number };
@@ -68,7 +69,10 @@ export function Cover({ weather }: { weather: Weather | null }) {
         I design products for people who have good reasons not to trust them:
         credit, transit, health, etc.
         </p>
-        <LocalConditions weather={weather} />
+        <div className="cover-widgets">
+          <SideProject />
+          <LocalConditions weather={weather} />
+        </div>
       </div>
     </header>
   );

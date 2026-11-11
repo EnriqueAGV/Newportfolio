@@ -616,6 +616,43 @@ button {
   text-wrap: balance;
 }
 
+.sheet-site-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  margin-top: calc(20px * var(--d));
+  padding-inline: 16px;
+  border-radius: var(--radius-control);
+  background: var(--bar);
+  color: var(--bar-fg);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.sheet-site-link:hover {
+  color: var(--signal);
+}
+.sheet-site-link:focus-visible {
+  outline-color: var(--rule);
+}
+
+@media (min-width: 861px) {
+  .sheet-header-with-action {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: end;
+    column-gap: var(--cell);
+  }
+  .sheet-header-with-action .sheet-name {
+    grid-column: 1 / -1;
+  }
+  .sheet-header-with-action .sheet-site-link {
+    margin-top: 0;
+  }
+}
+
 /* The screens come first: five key moments, staggered like a film strip. */
 .hero-shots {
   display: grid;
@@ -1122,6 +1159,117 @@ button {
 .cover-foot .cover-intro {
   margin-top: 0;
 }
+.cover-widgets {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: min(100%, 34rem);
+  margin-inline-start: auto;
+}
+
+@media (min-width: 861px) {
+  .cover-foot {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+    align-items: start;
+  }
+}
+
+.side-project-tag {
+  display: inline-block;
+  margin-bottom: 8px;
+  padding: 4px 8px;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-control);
+  background: var(--paper);
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.side-project {
+  --praxia-blue: #06459f;
+  --praxia-blue-hover: #053a86;
+  --praxia-panel: #f1f5fb;
+
+  display: grid;
+  grid-template-columns: minmax(0, 1.18fr) minmax(0, 1fr);
+  width: 100%;
+  border: 1px solid #b8cbe4;
+  border-radius: calc(var(--radius) * 1.5);
+  background: #fff;
+  color: #1d1d1f;
+  font-family: var(--font-sans);
+  overflow: hidden;
+}
+.side-project-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 17px clamp(12px, 3vw, 22px) 19px;
+}
+.side-project-logo {
+  width: 76px;
+  height: auto;
+  margin-bottom: 10px;
+}
+.side-project-headline {
+  font-size: clamp(1.125rem, 4.8vw, 1.5rem);
+  font-weight: 650;
+  letter-spacing: -0.035em;
+  line-height: 1.06;
+  text-wrap: balance;
+}
+.side-project-text {
+  margin: 8px 0 13px;
+  color: #545661;
+  font-size: 0.8125rem;
+  line-height: 1.35;
+  text-wrap: pretty;
+}
+.side-project-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: auto;
+  padding: 6px 10px;
+  border-radius: 4px;
+  background: var(--praxia-blue);
+  color: #fff;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  transition: background-color 160ms ease-out;
+}
+.side-project-visual {
+  display: grid;
+  align-items: center;
+  padding: 9px;
+  background: var(--praxia-panel);
+}
+.side-project-preview {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+  outline: 1px solid rgb(0 0 0 / 0.1);
+  outline-offset: -1px;
+}
+.side-project:hover .side-project-cta,
+.side-project:focus-visible .side-project-cta {
+  background: var(--praxia-blue-hover);
+}
+.side-project:focus-visible {
+  outline-color: var(--praxia-blue);
+}
+@media (max-width: 520px) {
+  .side-project {
+    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .side-project-cta {
+    transition: none;
+  }
+}
 /* The widget is built only from tester tokens, so every control moves it:
    ink sets the panel and signal colours, voice sets the readings, corner
    rounds the panel, density opens or closes the cells. */
@@ -1138,7 +1286,7 @@ button {
   overflow: hidden;
 }
 .conditions > div {
-  padding: calc(16px * var(--d)) calc(20px * var(--d));
+  padding: calc(16px * var(--d)) calc(12px * var(--d));
   border-left: 1px solid var(--bar-rule);
 }
 .conditions > div:first-child {
@@ -1151,11 +1299,11 @@ button {
   margin-top: calc(10px * var(--d));
   font-family: var(--font-display);
   font-weight: var(--display-weight);
-  font-size: 1.75rem;
+  font-size: 1.375rem;
   letter-spacing: var(--display-tracking);
   line-height: 1;
   text-transform: none;
-  white-space: nowrap;
+  overflow-wrap: anywhere;
 }
 .conditions dd span {
   font-family: var(--font-mono);
@@ -1166,7 +1314,6 @@ button {
   color: var(--bar-muted);
 }
 .conditions-time {
-  min-width: 6.4em;
   color: var(--signal);
   font-variant-numeric: tabular-nums;
 }
@@ -1181,14 +1328,12 @@ button {
     align-items: baseline;
     justify-content: space-between;
     gap: 12px;
+    padding-inline: calc(20px * var(--d));
     border-left: 0;
     border-top: 1px solid var(--bar-rule);
   }
   .conditions dd {
     font-size: 1.5rem;
-  }
-  .conditions-time {
-    min-width: 0;
   }
   .conditions > div:first-child {
     border-top: 0;
